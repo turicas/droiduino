@@ -86,6 +86,14 @@ need to install Django in your system:
     cp -r /path/to/this/repository/django/myproject .
 
 
+#### Running the tests
+
+You can run the Web application tests with these commands:
+
+    cd django/myproject
+    ./manage.py test
+
+
 #### Running the Web application
 
 To run this Web application you need a Web server that supports WSGI. I'm using
