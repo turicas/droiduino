@@ -70,7 +70,8 @@ Django
 
 To run the Web application you need to install
 [Django](http://djangoproject.com). The code available here (at `django/`) is
-for a *Django app* (not a Django project).
+for a Django project (called `myproject`) with only one Django app (called
+`droiduino`).
 
 
 #### Using virtualenv
@@ -82,16 +83,14 @@ need to install Django in your system:
     mkvirtualenv droiduino
     cdvirtualenv 
     pip install django
-    django-admin.py startproject the-project-name
-    cd project/
-    ln -s /path/to/this/repository/django/droiduino .
+    cp -r /path/to/this/repository/django/myproject .
 
 
 #### Running the Web application
 
-To run this Web application you need to create a Django project, configure
-`urls.py` and host it within a Web server that supports WSGI. I'm using
-[WebFaction](http://bit.ly/host-python) and happy with it.
+To run this Web application you need a Web server that supports WSGI. I'm using
+the hosting company [WebFaction](http://bit.ly/host-python) and am very happy
+with the service (but you can use any company you choose).
 
 
 Talks about this project
