@@ -1,0 +1,75 @@
+
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+        <title>Ventilador</title>
+        <script type="text/javascript" language="javascript" charset="utf-8">
+            var droid = new Android();
+            var mudarVelocidade = function() {
+                var velocidade = document.getElementById("velocidade").value;
+                droid.eventPost("PYTHON", JSON.stringify({action:"mudar_velocidade", data:velocidade}));
+            };
+            var atualizarVelocidade = function() {
+                droid.eventPost("PYTHON", JSON.stringify({action:"atualizar_velocidade", data:99}));
+            };
+            var sair = function() {
+                droid.eventPost("PYTHON", JSON.stringify({action:"EXIT", data:99}));
+            };
+
+            var receiveSpeedFromPython = function(speed) {
+                var speed = droid.eventWaitFor("fanSpeedChanged").result["speed"];
+                document.getElementById("velocidade").value = speed; 
+            };
+
+        </script>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 300%;
+                text-shadow: 4px 4px 4px #888;
+                margin: 20px 0;
+            }
+
+            label {
+                display: block;
+            }
+
+            input[type="text"] {
+                border-radius: 0.2em;
+                font-size: 40px;
+                margin: 10px 0 0 0;
+                padding: 4px;
+                text-align: center;
+                width: 200px;
+            }
+
+            input[type="button"] {
+                border: 1px solid #006B93;
+                border-radius: 0.3em;
+                color: #FFFFFF;
+                height: 40px;
+                font-size: 20px;
+                font-weight: bold;
+                background: #237ECD;
+                width: 200px;
+            }
+
+            input[type="button"]:active {
+                background-color: #FFFFFF;
+                color: #006B93;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Ventilador</h1>
+        <p><label for="limit">Velocidade</label> <input type="text" name="velocidade" value="0" id="velocidade"/></p>
+        <p><input type="button" value="Mudar" onclick="mudarVelocidade();" /></p>
+        <p><input type="button" value="Atualizar" onclick="atualizarVelocidade();" /></p>
+        <p><input type="button" value="Sair" onclick="sair();" /></p>
+    </body>
+</html>
+
